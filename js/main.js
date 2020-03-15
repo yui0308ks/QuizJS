@@ -21,7 +21,6 @@
   }
 
   function checkAnswer(li) {
-    // if (isAnswered === true) {
     if (isAnswered) {
       return;
     }
@@ -32,11 +31,17 @@
     } else {
       li.classList.add('wrong');
     }
+
+    btn.classList.remove('disabled');
   }
 
   function setQuiz() {
     isAnswered = false;
     question.textContent = quizSet[currentNum].q;
+
+    while(choices.firstChild) {
+      choices.removeChild(choices.firstChild);
+    }
 
     const shuffledChoices = shuffle([...quizSet[currentNum].c]);
     // console.log(quizSet[currentNum].c);
@@ -50,4 +55,9 @@
     });
   }
   setQuiz();
+
+  btn.addEventListener('click', () => {
+    currentNum++;
+    setQuiz();
+  });
   }
