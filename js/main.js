@@ -44,7 +44,6 @@
     }
 
     const shuffledChoices = shuffle([...quizSet[currentNum].c]);
-    // console.log(quizSet[currentNum].c);
     shuffledChoices.forEach(choice => {
       const li = document.createElement('li');
       li.textContent = choice;
@@ -53,10 +52,19 @@
       })
       choices.appendChild(li);
     });
+
+    if (currentNum === quizSet.length - 1 ) {
+      btn.textContent = 'Show Score';
+    }
   }
   setQuiz();
 
   btn.addEventListener('click', () => {
+    if (btn.classList.contains('disabled')){
+      return;
+    }
+    btn.classList.add('disabled');
+
     currentNum++;
     setQuiz();
   });
