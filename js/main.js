@@ -12,6 +12,7 @@
   ];
   let currentNum = 0;
   let isAnswered;
+  let score = 0;
   function shuffle(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -28,6 +29,7 @@
 
     if (li.textContent === quizSet[currentNum].c[0]){
       li.classList.add('correct');
+      score++;
     } else {
       li.classList.add('wrong');
     }
@@ -65,7 +67,11 @@
     }
     btn.classList.add('disabled');
 
-    currentNum++;
-    setQuiz();
+    if (currentNum === quizSet.length - 1) {
+      console.log(`Score: ${score} / ${quizSet.length}`);
+    } else {
+      currentNum++;
+      setQuiz();  
+    }
   });
   }
