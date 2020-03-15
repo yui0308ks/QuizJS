@@ -46,7 +46,7 @@ body {
 }
 
 #choices > li.correct::after {
-  content: '...correct!';
+  content: '...すごい！正解!';
 }
 
 #choices > li.wrong {
@@ -57,7 +57,7 @@ body {
 }
 
 #choices > li.wrong::after {
-  content: '...wrong!';
+  content: '...残念!不正解です。';
 }
 
 
@@ -89,6 +89,11 @@ body {
   margin: 0 auto;
   border-radius: 4px;
   text-align: center;
+  transition: 0.4s;
+}
+
+#result.hidden {
+  transform: translateY(-500px);
 }
 
 #result > p {
